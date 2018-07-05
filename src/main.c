@@ -4,10 +4,7 @@
 #include <driverlib/prcm.h>
 #include <driverlib/systick.h>
 
-#define CPU_CLOCK_SPEED 48000000
-
-#define DIO_LED_R 6
-#define DIO_LED_G 7
+#include "board_config.h"
 
 void main(void) {
 

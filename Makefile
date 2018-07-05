@@ -134,7 +134,11 @@ $(TARGET).elf: $(C_OBJECTS)
 	@echo HEX $@
 	$(SS) $(OBJCOPY) -O ihex $< $@
 
+# Include generated dependency files (alongside .o files)
+-include $(C_OBJECTS:.o=.d)
+
 $(BUILD_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@echo CC $(notdir $<)
-	$(SS) $(CC) -c -o $@ $(INCLUDES) $(DEFINES) $(CFLAGS) $<
+	$(SS) $(CC) $(INCLUDES) $(DEFINES) $(CFLAGS) -c -o $@ $<
+	$(SS) $(CC) $(INCLUDES) $(DEFINES) $(CFLAGS) -MM -MT $@ $< > $(BUILD_DIR)/$*.d
