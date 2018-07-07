@@ -9,6 +9,7 @@ BUILD_DIR = ./_build
 # Anything with ti/ at the beginning should be searched via the vpath set up for $CC2640_SDK.
 C_SOURCES := \
 	src/main.c \
+	src/board_config.c \
 	ti/devices/cc26x0/startup_files/startup_gcc.c
 
 CFLAGS += -Os -g
